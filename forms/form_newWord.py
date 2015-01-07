@@ -5,7 +5,7 @@ Created on 6.1.2015
 '''
 
 import gtk
-from word import Word
+from gui.word import Word
 
 class Form_newWord:
     def __init__(self):

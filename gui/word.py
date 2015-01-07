@@ -21,3 +21,9 @@ class Word:
         hbox.add(self.eng_meaning)
         
         return hbox
+    
+    def get_cz_meaning(self):
+        return self.cz_meaning
+    
+    def get_eng_meaning(self):
+        return self.eng_meaning

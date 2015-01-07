@@ -5,7 +5,7 @@ Created on 6.1.2015
 '''
 
 import gtk
-from form_newWord import Form_newWord
+from forms.form_newWord import Form_newWord
 
 class Menu:
     
