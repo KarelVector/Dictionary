@@ -6,11 +6,16 @@ Created on 6.1.2015
 
 import gtk
 from forms.form_newWord import Form_newWord
+from forms.form_dictionary import Form_Dictionary
+from dataStorage.database import Database
+from forms.form_test import Form_Test
 
 class Menu:
     
     def __init__(self, mainWindow):
         self.mainWindow = mainWindow
+        
+        self.db = Database()
         
         self.newWord = gtk.Button()
         self.newWord.set_label("New word")
@@ -30,13 +35,15 @@ class Menu:
         self.menu.pack_start(self.test, False, False, 5)
     
     def clicked_new_word(self, widget):
-        self.mainWindow.add_to_area(Form_newWord().get_form())
+        self.mainWindow.add_to_area(Form_newWord(self.db).get_form())
         
     def clicked_dictionary(self, widget):
-        print "dictionary"
+        words = self.db.get_words()
+        self.mainWindow.add_to_area(Form_Dictionary(words).get_form())
         
     def clicked_test(self, widget):
-        print "test"
+        words = self.db.get_words()
+        self.mainWindow.add_to_area(Form_Test(words).get_form())
     
     def get_menu(self):
         return self.menu

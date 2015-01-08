@@ -8,11 +8,14 @@ import gtk
 from gui.word import Word
 
 class Form_newWord:
-    def __init__(self):
+    def __init__(self, db):
+        
+        self.db = db
         
         self.l_czMeaning = gtk.Label()
         self.l_czMeaning.set_label("Your meaning :")
         self.e_czMeaning = gtk.Entry()
+        self.e_czMeaning.set_size_request(250,27)
         
         self.czMeaning = gtk.HBox()
         self.czMeaning.pack_start(self.l_czMeaning, False, False, 5)
@@ -21,6 +24,7 @@ class Form_newWord:
         self.l_engMeaning = gtk.Label()
         self.l_engMeaning.set_label("Eng meaning :  ")
         self.e_engMeaning = gtk.Entry()
+        self.e_engMeaning.set_size_request(250,27)
         
         self.engMeaning = gtk.HBox()
         self.engMeaning.pack_start(self.l_engMeaning, False, False, 5)
@@ -57,5 +61,5 @@ class Form_newWord:
             print "Fail"
         
     def save(self):
-        Word(self.e_czMeaning.get_text(), self.e_engMeaning.get_text())
-        print "saved"
+        nw = Word(self.e_czMeaning.get_text(), self.e_engMeaning.get_text())
+        self.db.add_word(nw)

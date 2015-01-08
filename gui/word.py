@@ -16,9 +16,15 @@ class Word:
     def get_word_hb(self):
         hbox = gtk.HBox()
         
-        hbox.add(self.cz_meaning)
+        l_cz = gtk.Label()
+        l_cz.set_label(self.cz_meaning)
+        
+        l_eng = gtk.Label()
+        l_eng.set_label(self.eng_meaning)
+        
+        hbox.add(l_cz)
         hbox.add(gtk.Label(" "))
-        hbox.add(self.eng_meaning)
+        hbox.add(l_eng)
         
         return hbox
     
